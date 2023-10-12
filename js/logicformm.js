@@ -4,9 +4,9 @@ let formCekOngkir = document.getElementById("formpostt");
 
 formCekOngkir.addEventListener("submit", (event) =>{
     event.preventDefault();
-    const asalValue = querySelector("#asal").value;
-    const tujuanValue = querySelector("#tujuan").value;
-    const quantityValue = querySelector("#quantity").value;
+    const asalValue = document.querySelector("#asal").value;
+    const tujuanValue = document.querySelector("#tujuan").value;
+    const quantityValue = document.querySelector("#quantity").value;
 
     if (
         !asalValue ||
