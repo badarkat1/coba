@@ -1,39 +1,40 @@
 const baseUrl = "https://be-palembang-24-production.up.railway.app/";
 
 let formCekOngkir = document.getElementById("formpostt");
+const display = document.querySelector("div[name='hasil-query']")
+display.innerHTML = ""
 
 formCekOngkir.addEventListener("submit", (event) =>{
     event.preventDefault();
     const asalValue = document.querySelector("#asal").value;
     const tujuanValue = document.querySelector("#tujuan").value;
     const quantityValue = document.querySelector("#quantity").value;
-    const display = document.querySelector("div[name='hasil-query']")
-
+    
     if (
         !asalValue ||
         !tujuanValue ||
         isNaN(quantityValue) ||
         quantityValue <= 0
-    ) {
-        alert("Please Fill in all fields correctly before sending ");
-        return;
-    }
-
-    const submittedData = {
-        asalkota: asalValue,
-        tujuankota: tujuanValue,
-        harga: 10000*quantityValue,
-
-    };
-
-    fetch(`${baseUrl}formpostt`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submittedData),
-    })
+        ) {
+            alert("Please Fill in all fields correctly before sending ");
+            return;
+        }
+        
+        const submittedData = {
+            asal: asalValue,
+            tujuan: tujuanValue,
+            berat: 15000*quantityValue
+        };
+        
+        fetch(`${baseUrl}formpostt`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(submittedData),
+        })
         .then((res) => {
+            console.log("test", res)
             if(res.ok) {
                 alert("Ongkir dapat dilihat");
             } else {
@@ -44,6 +45,7 @@ formCekOngkir.addEventListener("submit", (event) =>{
             alert(`Error Massage: ${error.massage}`);
         })
         .finally(() => {
+            const display = document.querySelector("div[name='hasil-query']")
             display.innerHTML = `
             <div class="parentPackageDiv">
                 <div>
@@ -53,7 +55,7 @@ formCekOngkir.addEventListener("submit", (event) =>{
                     <p>Tujuan Kota : ${submittedData.tujuankota}</p>
                 </div>
                 <div>
-                    <p> Harga : ${submittedData.harga}</p>
+                    <p> Harga : ${submittedData.berat}</p>
                 </div>
                 <div class="button-container">
                     <button type="button" onclick="clearOutput()">Clear</button>
