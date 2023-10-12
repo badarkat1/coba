@@ -36,7 +36,7 @@ formCekOngkir.addEventListener("submit", (event) =>{
         .then((res) => {
             console.log("test", res)
             if(res.ok) {
-                alert("Ongkir dapat dilihat");
+                alert("Ongkir sudah dapat dilihat");
             } else {
                 alert("Ongkir belum dapat dilihat");
             }
