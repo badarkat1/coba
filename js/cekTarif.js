@@ -118,7 +118,7 @@ function getCursorPosition(event) {
     eyes2.style.transform = `translate(-${x}, -${y})`;
   }
   
-  const text = document.getElementById("name", "tujuan");
+  const text = document.getElementById("label[for='tujuan']");
   const asalSpan = document.getElementById("span-asal");
   const tujuanSpan = document.getElementById("span-tujuan");
   const number = document.getElementById("quantity");

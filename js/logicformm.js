@@ -7,6 +7,7 @@ formCekOngkir.addEventListener("submit", (event) =>{
     const asalValue = document.querySelector("#asal").value;
     const tujuanValue = document.querySelector("#tujuan").value;
     const quantityValue = document.querySelector("#quantity").value;
+    const display = document.querySelector("div[name='hasil-query']")
 
     if (
         !asalValue ||
